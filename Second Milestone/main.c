@@ -19,7 +19,7 @@
 #include "torad.h"
 #include "uart0.h"
 #include "uart7.h"
-#include "getdistance.h"
+#include "get_distance.h"
 
 char test2[15]={0};
 char test[100]="";
