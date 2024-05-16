@@ -17,6 +17,8 @@
 #include "splitString.h"
 #include "todeg.h"
 #include "torad.h"
+#include "uart0.h"
+#include "uart7.h"
 
 char test2[15]={0};
 char test[100]="";
