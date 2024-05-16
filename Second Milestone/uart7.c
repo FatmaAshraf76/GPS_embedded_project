@@ -31,27 +31,13 @@ uint8_t UART7_AVAILABLE(void){
         return (((UART7_FR_R & UART_FR_RXFE)) == UART_FR_RXFE) ? 0:1 ;
 }
 
-uint8_t UART0_AVAILABLE(void){
-        return (((UART0_FR_R & UART_FR_RXFE)) == UART_FR_RXFE) ? 0:1 ;
-}
-
 uint8_t UART7_read(void){
      while (UART7_AVAILABLE() != 1){};
     return (UART7_DR_R & 0xFF);
 }
 
-uint8_t UART0_read(void){
-    while (UART0_AVAILABLE() != 1){};
-    return (UART0_DR_R & 0xFF);
-}
-
 void UART7_write(char c){
     while ((UART7_FR_R & UART_FR_TXFF ) == UART_FR_TXFF){};
     UART7_DR_R = c;
+    
 
-}
-void UART0_write(char c){
-    while ((UART0_FR_R & UART_FR_TXFF ) == UART_FR_TXFF){};
-    UART0_DR_R = c;
-
-}
