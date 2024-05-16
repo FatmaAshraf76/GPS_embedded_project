@@ -24,3 +24,17 @@ void UART0Init(void){
     GPIO_PORTA_DEN_R |= 0X03; //digital enable
 }
 
+uint8_t UART0_AVAILABLE(void){
+        return (((UART0_FR_R & UART_FR_RXFE)) == UART_FR_RXFE) ? 0:1 ;
+}
+uint8_t UART0_read(void){
+    while (UART0_AVAILABLE() != 1){};
+    return (UART0_DR_R & 0xFF);
+}
+
+}
+void UART0_write(char c){
+    while ((UART0_FR_R & UART_FR_TXFF ) == UART_FR_TXFF){};
+    UART0_DR_R = c;
+
+}
